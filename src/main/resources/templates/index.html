@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode Student Stats Portal</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<main class="page-shell">
+    <section class="hero-card">
+        <div class="eyebrow">Spring Boot Student Analytics</div>
+        <h1>Welcome to the LeetCode Student Report Generator</h1>
+        <p class="lead">
+            Upload a list of student LeetCode IDs and get a ranked report with max streak, total solved
+            problems, and total contests attended.
+        </p>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h2>Accepted Input</h2>
+                <p>Use a CSV or TXT file with either:</p>
+                <ul>
+                    <li><code>Name,LeetCode ID</code></li>
+                    <li><code>LeetCode ID</code></li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h2>Generated Output</h2>
+                <p>The downloaded CSV includes rank, name, LeetCode ID, max streak, solved count, contests, and status.</p>
+            </div>
+        </div>
+
+        <form id="uploadForm" class="upload-panel">
+            <label class="upload-label" for="fileInput">Student List</label>
+            <input id="fileInput" name="file" type="file" accept=".csv,.txt" required>
+            <button type="submit" id="submitButton">Generate Report</button>
+        </form>
+
+        <div id="progressSection" class="progress-section hidden" aria-live="polite">
+            <div class="progress-meta">
+                <span id="progressText">Preparing upload...</span>
+                <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-track">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
+        </div>
+
+        <div id="resultCard" class="result-card hidden">
+            <p id="resultMessage"></p>
+            <a id="downloadLink" class="download-link" href="#">Download Report</a>
+        </div>
+
+        <div id="errorCard" class="error-card hidden"></div>
+    </section>
+</main>
+<script th:src="@{/js/app.js}"></script>
+</body>
+</html>
